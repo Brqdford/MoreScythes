@@ -28,22 +28,22 @@ public static class ItemHandler
         var dmgx = damage - 1;
         var dmgy = damage;
         var spd = speed * 0.01;
-
         var item = ScriptableObject.CreateInstance<ItemData>();
         JsonUtility.FromJsonOverwrite(FileLoader.LoadFile(Assembly.GetExecutingAssembly(), $"data.{id}.json"), item);
         item.icon = SpriteUtil.CreateSprite(FileLoader.LoadFileBytes(Assembly.GetExecutingAssembly(), $"img.{id}.png"), $"Modded item icon {id}");
 
-        var useItem = (ItemDatabase.GetItemData(OriginalScytheId).useItem);
+        var useItem = Object.Instantiate(original.useItem);
         if (!useItem)
         {
             Plugin.logger.LogError("Original scythe has no useItem");
             return;
         }
-
-        var scythe = Object.Instantiate(useItem);
         
-        item.useItem = scythe;
+        var scythe = Object.Instantiate(useItem);
 
+        item.useItem = scythe;
+        var t = scythe.gameObject.GetComponent<DamageSource>()._damageRange;
+        t.Set(dmgx, dmgy);
         Object.DontDestroyOnLoad(useItem);
         Object.DontDestroyOnLoad(scythe);
 
