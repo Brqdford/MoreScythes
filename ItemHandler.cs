@@ -27,7 +27,7 @@ public static class ItemHandler
 
         var dmgx = damage - 1;
         var dmgy = damage;
-
+        var spd = speed * 0.01;
 
         var item = ScriptableObject.CreateInstance<ItemData>();
         JsonUtility.FromJsonOverwrite(FileLoader.LoadFile(Assembly.GetExecutingAssembly(), $"data.{id}.json"), item);
@@ -87,7 +87,7 @@ public static class ItemHandler
             return;
         }
         
-        CreateScytheItem(MithrilScytheId, 14, 5);
+        CreateScytheItem(MithrilScytheId, 20, 5);
         CreateScytheItem(SuniteScytheId, 15, 7);
         
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
