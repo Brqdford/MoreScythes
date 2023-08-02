@@ -5,7 +5,7 @@ using Morthy.Util;
 using UnityEngine;
 using Wish;
 using Object = UnityEngine.Object;
-
+using HarmonyLib;
 namespace MoreScythes;
 
 public static class ItemHandler
@@ -25,9 +25,8 @@ public static class ItemHandler
 
         var original = ItemDatabase.GetItemData(OriginalScytheId);
 
-        var dmgx = damage - 1;
+        var dmgx = damage - 8;
         var dmgy = damage;
-        var spd = speed * 0.01;
         var item = ScriptableObject.CreateInstance<ItemData>();
         JsonUtility.FromJsonOverwrite(FileLoader.LoadFile(Assembly.GetExecutingAssembly(), $"data.{id}.json"), item);
         item.icon = SpriteUtil.CreateSprite(FileLoader.LoadFileBytes(Assembly.GetExecutingAssembly(), $"img.{id}.png"), $"Modded item icon {id}");
@@ -38,14 +37,10 @@ public static class ItemHandler
             Plugin.logger.LogError("Original scythe has no useItem");
             return;
         }
+        item.useItem = useItem;
         
-        var scythe = Object.Instantiate(useItem);
-
-        item.useItem = scythe;
-        var t = scythe.gameObject.GetComponent<DamageSource>()._damageRange;
-        t.Set(dmgx, dmgy);
+        useItem.gameObject.GetComponent<DamageSource>()._damageRange.Set(dmgx, dmgy);
         Object.DontDestroyOnLoad(useItem);
-        Object.DontDestroyOnLoad(scythe);
 
         ItemDatabase.items[item.id] = item;
         ItemDatabase.ids[item.name.RemoveWhitespace().ToLower()] = item.id;
@@ -87,8 +82,8 @@ public static class ItemHandler
             return;
         }
         
-        CreateScytheItem(MithrilScytheId, 20, 5);
-        CreateScytheItem(SuniteScytheId, 15, 7);
+        CreateScytheItem(MithrilScytheId, 14, 30);
+        CreateScytheItem(SuniteScytheId, 15, 45);
         
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
         {
