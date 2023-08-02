@@ -13,7 +13,6 @@ public static class ItemHandler
     private const int OriginalScytheId = 3000;
     private const int MithrilScytheId = 30010;
     private const int SuniteScytheId = 30020;
-    private static readonly int _weaponType;
     private static bool _itemsCreated = false;
 
     private static void CreateScytheItem(int id, int speed, int damage)
@@ -26,6 +25,10 @@ public static class ItemHandler
 
         var original = ItemDatabase.GetItemData(OriginalScytheId);
 
+        var dmgx = damage - 1;
+        var dmgy = damage;
+
+
         var item = ScriptableObject.CreateInstance<ItemData>();
         JsonUtility.FromJsonOverwrite(FileLoader.LoadFile(Assembly.GetExecutingAssembly(), $"data.{id}.json"), item);
         item.icon = SpriteUtil.CreateSprite(FileLoader.LoadFileBytes(Assembly.GetExecutingAssembly(), $"img.{id}.png"), $"Modded item icon {id}");
@@ -36,7 +39,13 @@ public static class ItemHandler
             Plugin.logger.LogError("Original scythe has no useItem");
             return;
         }
-        item.useItem = useItem;
+
+        var scythe = Object.Instantiate(useItem);
+        
+        item.useItem = scythe;
+
+        Object.DontDestroyOnLoad(useItem);
+        Object.DontDestroyOnLoad(scythe);
 
         ItemDatabase.items[item.id] = item;
         ItemDatabase.ids[item.name.RemoveWhitespace().ToLower()] = item.id;
@@ -61,9 +70,9 @@ public static class ItemHandler
             recipe.characterProgressTokens = new List<Progress>();
             recipe.questProgressTokens = new List<QuestAsset>();
             if (id==30010){
-            recipe.hoursToCraft = 12.3f;
+            recipe.hoursToCraft = 12f;
             }else {
-            recipe.hoursToCraft = 18.5f;
+            recipe.hoursToCraft = 18f;
             }
                 
             rl.craftingRecipes.Add(recipe);
@@ -78,8 +87,8 @@ public static class ItemHandler
             return;
         }
         
-        CreateScytheItem(MithrilScytheId, 15, 5);
-        CreateScytheItem(SuniteScytheId, 18, 8);
+        CreateScytheItem(MithrilScytheId, 14, 5);
+        CreateScytheItem(SuniteScytheId, 15, 7);
         
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
         {
