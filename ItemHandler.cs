@@ -17,11 +17,6 @@ public static class ItemHandler
 
     private static void CreateScytheItem(int id, int speed, int damage)
     {
-		if ((bool)ItemDatabase.GetItemData(id))
-		{
-			Plugin.logger.LogError((object)$"Cannot create modded item with ID {id} because it is already in use by a different item.");
-			return;
-		}
 
         var original = ItemDatabase.GetItemData(OriginalScytheId);
 
@@ -38,13 +33,15 @@ public static class ItemHandler
             return;
         }
         item.useItem = useItem;
+
         var frameRate = useItem.gameObject.GetComponent<Weapon>();
         Traverse.Create(frameRate).Field("_frameRate").SetValue(speed);
 
         useItem.gameObject.GetComponent<DamageSource>()._damageRange.Set(dmgx, dmgy);
+        
+        useItem.gameObject.SetActive(false);
 
         Object.DontDestroyOnLoad(useItem);
-
         ItemDatabase.items[item.id] = item;
         ItemDatabase.ids[item.name.RemoveWhitespace().ToLower()] = item.id;
         Plugin.logger.LogDebug($"Created item {item.id} with name {item.name}");
@@ -79,14 +76,9 @@ public static class ItemHandler
 
     public static void CreateScytheItems()
     {
-        if (_itemsCreated)
-        {
-            return;
-        }
         
         CreateScytheItem(MithrilScytheId, 14, 22);
         CreateScytheItem(SuniteScytheId, 15, 32);
-        
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
         {
             new() { item = ItemDatabase.GetItemData(ItemID.MithrilBar), amount = 10 }
