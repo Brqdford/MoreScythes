@@ -77,7 +77,7 @@ public static class ItemHandler
     public static void CreateScytheItems()
     {
         
-        CreateScytheItem(MithrilScytheId, 14, 22);
+        CreateScytheItem(MithrilScytheId, 14, 20);
         CreateScytheItem(SuniteScytheId, 15, 32);
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
         {
