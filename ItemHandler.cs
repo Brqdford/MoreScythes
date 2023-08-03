@@ -13,6 +13,7 @@ public static class ItemHandler
     private const int OriginalScytheId = 3000;
     private const int MithrilScytheId = 30010;
     private const int SuniteScytheId = 30020;
+    private const int GloriteScytheId = 30030;
     private static bool _itemsCreated = false;
 
     private static void CreateScytheItem(int id, int speed, int damage)
@@ -65,8 +66,10 @@ public static class ItemHandler
             recipe.questProgressTokens = new List<QuestAsset>();
             if (id==30010){
             recipe.hoursToCraft = 12f;
-            }else {
+            }else if (id == 30020){
             recipe.hoursToCraft = 18f;
+            }else {
+            recipe.hoursToCraft = 24f;
             }
                 
             rl.craftingRecipes.Add(recipe);
@@ -78,7 +81,8 @@ public static class ItemHandler
     {
         
         CreateScytheItem(MithrilScytheId, 14, 18);
-        CreateScytheItem(SuniteScytheId, 15, 32);
+        CreateScytheItem(SuniteScytheId, 15, 22);
+        CreateScytheItem(GloriteScytheId, 16, 26);
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
         {
             new() { item = ItemDatabase.GetItemData(ItemID.MithrilBar), amount = 10 }
@@ -88,6 +92,9 @@ public static class ItemHandler
         {
             new() { item = ItemDatabase.GetItemData(ItemID.SuniteBar), amount = 10 }
         });
-        _itemsCreated = true;
+        AddItemToRecipeList(30030, "RecipeList_Monster Anvil", new List<ItemInfo>
+        {
+            new() { item = ItemDatabase.GetItemData(ItemID.GloriteBar), amount = 10 }
+        });
     }
 }
