@@ -84,17 +84,17 @@ public static class ItemHandler
             return;
         }
         
-        CreateScytheItem(MithrilScytheId, 14, 30);
-        CreateScytheItem(SuniteScytheId, 15, 45);
+        CreateScytheItem(MithrilScytheId, 14, 22);
+        CreateScytheItem(SuniteScytheId, 15, 32);
         
         AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
         {
-            new() { item = ItemDatabase.GetItemData(ItemID.MithrilBar), amount = 8 }
+            new() { item = ItemDatabase.GetItemData(ItemID.MithrilBar), amount = 10 }
         });
         
         AddItemToRecipeList(30020, "RecipeList_Anvil", new List<ItemInfo>
         {
-            new() { item = ItemDatabase.GetItemData(ItemID.SuniteBar), amount = 9 }
+            new() { item = ItemDatabase.GetItemData(ItemID.SuniteBar), amount = 10 }
         });
         _itemsCreated = true;
     }
