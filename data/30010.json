@@ -1,7 +1,7 @@
 {
   "name": "Mithril Scythe",
   "description": "Reaps crops with ease and slices down the toughest of weeds.",
-  "helpDescription": "<sprite=\"attack_damage_icon\" index=0> 12-20 Damage\n<sprite=\"attack_speed_icon\" index=0> 14 Attack Speed",
+  "helpDescription": "<sprite=\"attack_damage_icon\" index=0> 10-18 Damage\n<sprite=\"attack_speed_icon\" index=0> 14 Attack Speed",
   "useDescription": "(Left click to swing)",
   "id": 30010,
   "stackSize": 1,
