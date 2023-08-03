@@ -38,15 +38,17 @@ public static class ItemHandler
             return;
         }
         item.useItem = useItem;
-        
+        var frameRate = useItem.gameObject.GetComponent<Weapon>();
+        Traverse.Create(frameRate).Field("_frameRate").SetValue(speed);
+
         useItem.gameObject.GetComponent<DamageSource>()._damageRange.Set(dmgx, dmgy);
+
         Object.DontDestroyOnLoad(useItem);
 
         ItemDatabase.items[item.id] = item;
         ItemDatabase.ids[item.name.RemoveWhitespace().ToLower()] = item.id;
         Plugin.logger.LogDebug($"Created item {item.id} with name {item.name}");
     }
-
     private static void AddItemToRecipeList(int id, string recipeList, List<ItemInfo> input)
     {
         
