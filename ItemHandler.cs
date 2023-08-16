@@ -11,10 +11,10 @@ namespace MoreScythes;
 public static class ItemHandler
 {
     private const int OriginalScytheId = 3000;
-    private const int MithrilScytheId = 30010;
+    private const int AdamantScytheId = 30000;
+    private const int MithrilScytheId = 30090;
     private const int SuniteScytheId = 30020;
     private const int GloriteScytheId = 30030;
-    private static bool _itemsCreated = false;
 
     private static void CreateScytheItem(int id, int speed, int damage)
     {
@@ -39,7 +39,7 @@ public static class ItemHandler
         Traverse.Create(frameRate).Field("_frameRate").SetValue(speed);
 
         useItem.gameObject.GetComponent<DamageSource>()._damageRange.Set(dmgx, dmgy);
-        
+
         useItem.gameObject.SetActive(false);
 
         Object.DontDestroyOnLoad(useItem);
@@ -49,7 +49,7 @@ public static class ItemHandler
     }
     private static void AddItemToRecipeList(int id, string recipeList, List<ItemInfo> input)
     {
-        
+
         foreach (var rl in Resources.FindObjectsOfTypeAll<RecipeList>())
         {
             if (!rl.name.Equals(recipeList)) continue;
@@ -64,14 +64,16 @@ public static class ItemHandler
             recipe.worldProgressTokens = new List<Progress>();
             recipe.characterProgressTokens = new List<Progress>();
             recipe.questProgressTokens = new List<QuestAsset>();
-            if (id==30010){
+            if (id==30000){
+            recipe.hoursToCraft = 6f;
+            }else if (id==30090){
             recipe.hoursToCraft = 12f;
             }else if (id == 30020){
             recipe.hoursToCraft = 18f;
             }else {
             recipe.hoursToCraft = 24f;
             }
-                
+
             rl.craftingRecipes.Add(recipe);
             Plugin.logger.LogDebug($"Added item {id} to {recipeList}");
         }
@@ -79,11 +81,15 @@ public static class ItemHandler
 
     public static void CreateScytheItems()
     {
-        
+        CreateScytheItem(AdamantScytheId, 13, 14);
         CreateScytheItem(MithrilScytheId, 14, 18);
         CreateScytheItem(SuniteScytheId, 15, 22);
         CreateScytheItem(GloriteScytheId, 16, 26);
-        AddItemToRecipeList(30010, "RecipeList_Anvil", new List<ItemInfo>
+        AddItemToRecipeList(30000, "RecipeList_Anvil", new List<ItemInfo>
+        {
+            new() { item = ItemDatabase.GetItemData(ItemID.AdamantBar), amount = 10 }
+        });
+        AddItemToRecipeList(30090, "RecipeList_Anvil", new List<ItemInfo>
         {
             new() { item = ItemDatabase.GetItemData(ItemID.MithrilBar), amount = 10 }
         });

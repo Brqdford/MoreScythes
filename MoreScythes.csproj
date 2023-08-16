@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
@@ -16,43 +16,43 @@
 
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\0Harmony.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\BepInEx.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\BepInEx.Harmony.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\BepInEx.Harmony.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Preloader">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\BepInEx.Preloader.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\BepInEx.Preloader.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\Sirenix.Serialization.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="SunHaven.Core">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\SunHaven.Core.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\SunHaven.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\UnityEngine.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>C:\Users\Brqdford\Documents\MoreScythes\MoreScythes\Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 
