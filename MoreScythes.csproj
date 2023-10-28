@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
-    <Version>1.0.8</Version>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.0.9</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
@@ -10,63 +12,43 @@
     </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
-  </ItemGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\BepInEx.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx.Harmony">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\BepInEx.Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx.Preloader">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\BepInEx.Preloader.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="SunHaven.Core">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\SunHaven.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>C:\Users\Brqdford\Documents\SunHavenMods\MoreScythes\Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Compile Include="..\Morthy.Util\FileLoader.cs" Link="FileLoader.cs" />
-    <Compile Include="..\Morthy.Util\SpriteUtil.cs" Link="SpriteUtil.cs" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Update="BepInEx.Core" Version="5.4.21" />
   </ItemGroup>
   
   <ItemGroup>
     <EmbeddedResource Include="data\*.json" />
     <EmbeddedResource Include="img\*.png" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>..\libs\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="SunHaven.Core">
+      <HintPath>..\libs\SunHaven.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\libs\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\libs\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\libs\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
-  <Import Project="solution.targets" />
 
 </Project>
