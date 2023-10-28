@@ -14,6 +14,7 @@ public static class ItemHandler
     private const int SuniteScytheId = 30030;
     private const int GloriteScytheId = 30090;
     private const string RecipeListAnvil = "RecipeList_Anvil";
+    private const string RecipeListMonsterAnvil = "RecipeList_Monster Anvil";
 
     private static void CreateAndConfigureItem(int id, int speed, int damage)
     {
@@ -79,7 +80,7 @@ public static class ItemHandler
             (AdamantScytheId, 13, 14, RecipeListAnvil, new List<ItemInfo> { new() { item = ItemDatabase.GetItemData(ItemID.AdamantBar), amount = 10 } }, 6f),
             (MithrilScytheId, 14, 18, RecipeListAnvil, new List<ItemInfo> { new() { item = ItemDatabase.GetItemData(ItemID.MithrilBar), amount = 10 } }, 12f),
             (SuniteScytheId, 15, 22, RecipeListAnvil, new List<ItemInfo> { new() { item = ItemDatabase.GetItemData(ItemID.SuniteBar), amount = 10 } }, 24f),
-            (GloriteScytheId, 16, 26, RecipeListAnvil, new List<ItemInfo> { new() { item = ItemDatabase.GetItemData(ItemID.GloriteBar), amount = 10 } }, 48f),
+            (GloriteScytheId, 16, 26, RecipeListMonsterAnvil, new List<ItemInfo> { new() { item = ItemDatabase.GetItemData(ItemID.GloriteBar), amount = 10 } }, 48f),
         };
 
         foreach (var (id, speed, damage, recipeList, inputs, craftingHours) in scytheDefinitions)
