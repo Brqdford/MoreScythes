@@ -6,7 +6,7 @@ using MoreScythes;
 using UnityEngine;
 using Wish;
 
-[BepInPlugin("org.brqdfordsdevelopmentgroup.morescythes", "More Scythes", "1.0.8")]
+[BepInPlugin("org.brqdfordsdevelopmentgroup.morescythes", "More Scythes", "1.0.9")]
 public class Plugin : BaseUnityPlugin
 {
 	[HarmonyPatch]
@@ -41,7 +41,7 @@ public class Plugin : BaseUnityPlugin
 
 	public const string PLUGIN_NAME = "More Scythes";
 
-	public const string PLUGIN_VERSION = "1.0.8";
+	public const string PLUGIN_VERSION = "1.0.9";
 
 	private Harmony _harmony = new Harmony("org.brqdfordsdevelopmentgroup.morescythes");
 

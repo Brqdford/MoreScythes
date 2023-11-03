@@ -43,7 +43,7 @@ public static class ItemHandler
         useItem.gameObject.SetActive(false);
 
         Object.DontDestroyOnLoad(useItem);
-        ItemDatabase.items[item.id] = item;
+        ItemDatabase.itemDatas[item.id] = item;
         ItemDatabase.ids[item.name.RemoveWhitespace().ToLower()] = item.id;
         Plugin.logger.LogDebug($"Created item {item.id} with name {item.name}");
     }
@@ -53,8 +53,8 @@ public static class ItemHandler
         foreach (var rl in Resources.FindObjectsOfTypeAll<RecipeList>())
         {
             if (!rl.name.Equals(recipeList)) continue;
-            
-            if (rl.craftingRecipes.Any(r => r.output.item.id == id))
+
+            if (rl.craftingRecipes.Any(r => r.output.item && r.output.item.id == id))
             {
                 return;
             }
